@@ -1,3 +1,5 @@
+import * as crypto from 'node:crypto';
+
 import { Injectable } from '@nestjs/common';
 
 import { CreateCatDto } from './dto/create-cat.dto';
@@ -6,7 +8,10 @@ import { UpdateCatDto } from './dto/update-cat.dto';
 @Injectable()
 export class CatsService {
   create(createCatDto: CreateCatDto) {
-    return 'This action adds a new cat';
+    const randomUuid = crypto.randomUUID();
+    const withId = { ...createCatDto, id: randomUuid };
+
+    return withId;
   }
 
   findAll() {
