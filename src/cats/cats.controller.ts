@@ -1,11 +1,11 @@
 import {
-  Controller,
-  Get,
-  Post,
   Body,
-  Patch,
-  Param,
+  Controller,
   Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
 } from '@nestjs/common';
 
 import { CatsService } from './cats.service';
@@ -22,8 +22,8 @@ export class CatsController {
   }
 
   @Get()
-  findAll() {
-    return this.catsService.findAll();
+  async findAll(): Promise<any[] | string> {
+    return await this.catsService.findAll();
   }
 
   @Get(':id')

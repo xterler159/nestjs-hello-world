@@ -14,8 +14,10 @@ export class CatsService {
     return withId;
   }
 
-  findAll() {
-    return `This action returns all cats`;
+  findAll(): Promise<any[] | string> {
+    return new Promise((resolve) => {
+      resolve(`This action returns all cats`);
+    });
   }
 
   findOne(id: number) {
