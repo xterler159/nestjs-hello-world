@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   Post,
+  Query,
 } from '@nestjs/common';
 
 import { CatsService } from './cats.service';
@@ -22,7 +23,13 @@ export class CatsController {
   }
 
   @Get()
-  async findAll(): Promise<any[] | string> {
+  async findAll(
+    @Query('age') age: number,
+    @Query('breed') breed: string,
+  ): Promise<any[] | string> {
+    console.log('age:', age);
+    console.log('breed:', breed);
+
     return await this.catsService.findAll();
   }
 
