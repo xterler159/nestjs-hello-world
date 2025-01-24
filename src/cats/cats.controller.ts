@@ -12,6 +12,7 @@ import {
 import { CatsService } from './cats.service';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
+import { Cat } from './interfaces/cat.interface';
 
 @Controller('/cats')
 export class CatsController {
@@ -26,7 +27,7 @@ export class CatsController {
   async findAll(
     @Query('age') age: number,
     @Query('breed') breed: string,
-  ): Promise<any[] | string> {
+  ): Promise<Cat[] | string> {
     console.log('age:', age);
     console.log('breed:', breed);
 
