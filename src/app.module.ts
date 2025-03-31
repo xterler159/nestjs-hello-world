@@ -19,7 +19,7 @@ import { CatEntity } from './cats/entities/cat.entity';
       username: 'postgres',
       password: 'postgres',
       database: 'postgres',
-      schema: 'nestjs-hello-world',
+      schema: 'nestjs_hello_world',
       entities: [CatEntity],
       synchronize: true,
     }),
