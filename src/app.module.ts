@@ -11,7 +11,6 @@ import { CatEntity } from './cats/entities/cat.entity';
 @Module({
   imports: [
     ConfigModule.forRoot({ envFilePath: ['.env', '.env.local'] }),
-    CatsModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -23,6 +22,7 @@ import { CatEntity } from './cats/entities/cat.entity';
       entities: [CatEntity],
       synchronize: true,
     }),
+    CatsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
