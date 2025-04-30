@@ -7,6 +7,7 @@ import { AppService } from './app.service';
 
 import { CatsModule } from './cats/cats.module';
 import { CatEntity } from './cats/entities/cat.entity';
+import { classes } from '@automapper/classes';
 
 @Module({
   imports: [
