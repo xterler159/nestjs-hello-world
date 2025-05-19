@@ -7,17 +7,11 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
-import { createMap } from '@automapper/core';
 
 import { CatsService } from './cats.service';
 
-import { CatEntity } from './entities/cat.entity';
-
 import { CreateCatDto } from './dto/create-cat.dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
-import { Dto as CatDto } from './dto/cat.dto';
-
-import { mapper } from 'src/mappings/mapper';
 
 @Controller('/cats')
 export class CatsController {
@@ -31,12 +25,7 @@ export class CatsController {
   @Get()
   async findAll() {
     const cats = await this.catsService.findAll();
-    createMap(mapper, CatEntity, CatDto);
-    const mapped = cats.map((cat: CatEntity) =>
-      mapper.map(cat, CatEntity, CatDto),
-    );
-
-    return mapped;
+    return cats;
   }
 
   @Get(':id')

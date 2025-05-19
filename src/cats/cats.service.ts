@@ -19,6 +19,7 @@ export class CatsService {
   async create(createCatDto: CreateCatDto) {
     const cat = new CatEntity();
 
+    // TODO: use automapper.
     cat.age = createCatDto.age;
     cat.name = createCatDto.name;
     cat.breed = createCatDto.breed;
