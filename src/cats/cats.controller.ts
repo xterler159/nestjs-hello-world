@@ -1,3 +1,5 @@
+import { UUID } from 'crypto';
+
 import {
   Body,
   Controller,
@@ -29,8 +31,8 @@ export class CatsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.catsService.findOne(+id);
+  findOne(@Param('id') id: UUID) {
+    return this.catsService.findOne(id);
   }
 
   @Patch(':id')

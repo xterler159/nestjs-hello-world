@@ -1,4 +1,6 @@
-import { Injectable } from '@nestjs/common';
+import { UUID } from 'crypto';
+
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { DataSource, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 
@@ -55,8 +57,14 @@ export class CatsService {
     return this.catRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} cat`;
+  async findOne(id: UUID) {
+    const cat = await this.catRepository.findOneBy({ id });
+
+    if (!cat) {
+      throw new NotFoundException(`Cat with id ${id} not found`);
+    }
+
+    return cat;
   }
 
   update(id: number, updateCatDto: UpdateCatDto) {
