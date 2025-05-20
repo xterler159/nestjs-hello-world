@@ -2,9 +2,6 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-
 import { CatsModule } from './cats/cats.module';
 import { CatEntity } from './cats/entities/cat.entity';
 
@@ -24,8 +21,6 @@ import { CatEntity } from './cats/entities/cat.entity';
     }),
     CatsModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {
   // constructor(private dataSource: DataSource) {}
